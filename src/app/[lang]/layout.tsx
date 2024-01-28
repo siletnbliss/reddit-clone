@@ -9,6 +9,7 @@ import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import { theme } from "../mantine/theme";
 import Header from "./components/nav/header";
 import { LocaleProvider } from "./components/locale/locale.provider";
+import Providers from "./providers";
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
@@ -34,12 +35,14 @@ export default function RootLayout({
         <ColorSchemeScript defaultColorScheme="auto" />
       </head>
       <body className={inter.className}>
-        <MantineProvider theme={theme}>
-          <LocaleProvider init={lang}>
-            <Header />
-            {children}
-          </LocaleProvider>
-        </MantineProvider>
+        <Providers>
+          <MantineProvider theme={theme}>
+            <LocaleProvider init={lang}>
+              <Header />
+              {children}
+            </LocaleProvider>
+          </MantineProvider>
+        </Providers>
       </body>
     </html>
   );

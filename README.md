@@ -19,3 +19,7 @@ Traditional i18n with Next.js doesn't quite work with App router. To fix this, I
 React Bootstrap is not up to date with RSCs, so they can't be used normally without causing issues. I tried exporting every component from a custom module, wrapping them with the "use client" directive to try to set them as Client Components. Unfortunately, this didn't work, so I chose to use [Mantine](https://mantine.dev/) instead.
 
 Mantine is up to date with all modern React functionalities and it's an awesome library with tons of useful features quite frankly.
+
+### Reddit API
+
+Using Reddit to fetch JSON responses is easily achievable at `http://www.reddit.com/best.json`, the only limitation is the request limit of 100 requests per minute. This shouldn't be an issue for a small project like this.
