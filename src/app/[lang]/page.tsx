@@ -1,11 +1,21 @@
-import { useTranslation } from "../i18n";
+"use client";
+import PostList from "./components/post/post-list";
+import { useFetchPosts } from "./hooks/useFetchPosts";
 import { LocalePageProps } from "./ts/locale";
 
-export default async function Home({
+export default function Home({
   params: { lang },
 }: {
   params: LocalePageProps;
 }) {
-  const { t } = await useTranslation(lang);
-  return <main>Hey, {lang}</main>;
+  const { data, isLoading, isError } = useFetchPosts();
+  return (
+    <main className="w-[1000px] px-1 max-w-full">
+      <PostList
+        data={data?.data.children}
+        loading={isLoading}
+        error={isError}
+      />
+    </main>
+  );
 }
