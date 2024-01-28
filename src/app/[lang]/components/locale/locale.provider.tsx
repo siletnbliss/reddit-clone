@@ -14,12 +14,11 @@ export const LocaleProvider = ({
   children,
   init,
 }: React.PropsWithChildren<{ init: string }>) => {
-  const [locale, setLocale] = useState(init);
+  const [locale] = useState(init);
   const router = useRouter();
   const pathname = usePathname();
 
   const handleChange = (loc: string) => {
-    setLocale(loc);
     const newPath = pathname.split("/").slice(2);
     router.replace(`/${loc}/${newPath.join("/")}`);
   };
