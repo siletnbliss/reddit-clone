@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
+import "@mantine/core/styles.css";
 import { dir } from "i18next";
 import { languages } from "../i18n/settings";
 import { LocalePageProps } from "./ts/locale";
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import { theme } from "../mantine/theme";
+import Header from "./components/nav/header";
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
@@ -25,7 +29,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang={lang} dir={dir(lang)}>
-      <body className={inter.className}>{children}</body>
+      <head>
+        <ColorSchemeScript defaultColorScheme="auto" />
+      </head>
+      <body className={inter.className}>
+        <MantineProvider theme={theme}>
+          <Header />
+          {children}
+        </MantineProvider>
+      </body>
     </html>
   );
 }
