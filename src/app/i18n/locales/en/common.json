@@ -2,5 +2,9 @@
   "locale": {
     "es": "Spanish",
     "en": "English"
+  },
+  "error": {
+    "title": "Sorry, something went wrong.",
+    "message": "Please try reloading the page."
   }
 }

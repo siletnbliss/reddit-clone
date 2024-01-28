@@ -8,6 +8,13 @@
   --primary-color: #ff4500;
 }
 
+.background-back {
+  background-color: light-dark(
+    var(--mantine-color-gray-2),
+    var(--mantine-color-dark-7)
+  );
+}
+
 .border-bg {
   border: rem(1px) solid
     light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-6));

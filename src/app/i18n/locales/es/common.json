@@ -2,5 +2,9 @@
   "locale": {
     "es": "Español",
     "en": "Inglés"
+  },
+  "error": {
+    "title": "Algo salió mal.",
+    "message": "Por favor intenta recargar la página."
   }
 }

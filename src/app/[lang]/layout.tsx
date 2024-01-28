@@ -5,7 +5,7 @@ import "@mantine/core/styles.css";
 import { dir } from "i18next";
 import { languages } from "../i18n/settings";
 import { LocalePageProps } from "./ts/locale";
-import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import { ColorSchemeScript, Container, MantineProvider } from "@mantine/core";
 import { theme } from "../mantine/theme";
 import Header from "./components/nav/header";
 import { LocaleProvider } from "./components/locale/locale.provider";
@@ -30,16 +30,23 @@ export default function RootLayout({
   params: LocalePageProps;
 }>) {
   return (
-    <html lang={lang} dir={dir(lang)}>
+    <html className="min-h-screen relative" lang={lang} dir={dir(lang)}>
       <head>
         <ColorSchemeScript defaultColorScheme="auto" />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} h-full w-full absolute`}>
         <Providers>
           <MantineProvider theme={theme}>
             <LocaleProvider init={lang}>
               <Header />
-              {children}
+              <Container
+                className="background-back flex flex-col items-center"
+                py="md"
+                mih={"93.5%"}
+                maw={"100vw"}
+              >
+                {children}
+              </Container>
             </LocaleProvider>
           </MantineProvider>
         </Providers>
