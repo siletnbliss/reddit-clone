@@ -8,6 +8,7 @@ import { LocalePageProps } from "./ts/locale";
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import { theme } from "../mantine/theme";
 import Header from "./components/nav/header";
+import { LocaleProvider } from "./components/locale/locale.provider";
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
@@ -34,8 +35,10 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <MantineProvider theme={theme}>
-          <Header />
-          {children}
+          <LocaleProvider init={lang}>
+            <Header />
+            {children}
+          </LocaleProvider>
         </MantineProvider>
       </body>
     </html>
