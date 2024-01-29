@@ -21,10 +21,10 @@ const fetchPosts = async (kind: string) => {
   return res.data;
 };
 
-export const useFetchPosts = () => {
-  const params = useSearchParams();
+export const useFetchPostParams = () => {
   const router = useRouter();
   const pathname = usePathname();
+  const params = useSearchParams();
   const kind = params.get(KIND_PARAM) ?? "best";
 
   const setKind = (kind: PostKind) => {
@@ -32,6 +32,12 @@ export const useFetchPosts = () => {
     newParams.set(KIND_PARAM, kind);
     router.push(`${pathname}?${newParams.toString()}`);
   };
+
+  return { setKind, kind };
+};
+
+export const useFetchPosts = (kindParam: string) => {
+  const kind = kindParam ?? "best";
 
   const query = useQuery({
     queryKey: [kind],
@@ -42,8 +48,6 @@ export const useFetchPosts = () => {
   });
 
   return {
-    kind,
-    setKind,
     ...query,
   };
 };

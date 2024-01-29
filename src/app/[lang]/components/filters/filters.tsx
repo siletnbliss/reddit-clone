@@ -1,6 +1,6 @@
 "use client";
 import { Card, Chip, ChipGroup, Group, ScrollArea } from "@mantine/core";
-import { PostKind, useFetchPosts } from "../../hooks/useFetchPosts";
+import { PostKind, useFetchPostParams } from "../../hooks/useFetchPosts";
 import {
   Icon,
   IconChartBar,
@@ -30,7 +30,7 @@ export default function Filters() {
 
   const { t } = useTranslation(locale, "feed");
 
-  const { kind, setKind } = useFetchPosts();
+  const { kind, setKind } = useFetchPostParams();
 
   const handleChange = (k: string) => {
     setKind(k as PostKind);

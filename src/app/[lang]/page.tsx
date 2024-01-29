@@ -1,23 +1,24 @@
-"use client";
+import { Suspense } from "react";
 import Filters from "./components/filters/filters";
-import PostList from "./components/post/post-list";
-import { useFetchPosts } from "./hooks/useFetchPosts";
+
 import { LocalePageProps } from "./ts/locale";
+import PostFetcher from "./components/post/post-fetcher";
+
+export const dynamic = "force-dynamic";
 
 export default function Home({
   params: { lang },
+  searchParams: { k },
 }: {
   params: LocalePageProps;
+  searchParams: { k: string };
 }) {
-  const { data, isLoading, isError } = useFetchPosts();
   return (
     <main className="w-[1000px] px-1 max-w-full">
-      <Filters />
-      <PostList
-        data={data?.data.children}
-        loading={isLoading}
-        error={isError}
-      />
+      <Suspense>
+        <Filters />
+      </Suspense>
+      <PostFetcher kind={k} />
     </main>
   );
 }
