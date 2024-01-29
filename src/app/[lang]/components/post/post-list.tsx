@@ -1,6 +1,8 @@
 import { RedditPost } from "../../ts/reddit";
 import PostSkeleton from "./post-skeletont";
 import Error from "../common/error";
+import { Stack } from "@mantine/core";
+import PostCard from "../card/post-card";
 
 interface Props {
   error?: boolean;
@@ -14,5 +16,11 @@ export default function PostList({ data, error, loading }: Props) {
   if (error) {
     return <Error />;
   }
-  return <div>post-list</div>;
+  return (
+    <Stack>
+      {data?.map((post, i) => (
+        <PostCard key={i} post={post} />
+      ))}
+    </Stack>
+  );
 }

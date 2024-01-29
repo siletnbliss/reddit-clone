@@ -36,6 +36,7 @@ export const useFetchPosts = () => {
   const query = useQuery({
     queryKey: [kind],
     queryFn: (ctx) => fetchPosts(ctx.queryKey[0]),
+    refetchInterval: false,
   });
 
   return {
