@@ -95,17 +95,12 @@ export default function PostCard({ post }: Props) {
             </a>
             {!!post.data.url_overridden_by_dest && (
               <a href={postLink} target="_blank">
-                <Box
-                  h={425}
-                  className="md:px-12 max-h-52 sm:max-h-72 md:max-h-full "
-                >
-                  <MediaPreview
-                    isVideo={post.data.is_video}
-                    link={post.data.url_overridden_by_dest}
-                    alt={post.data.title}
-                    height={"100%"}
-                  />
-                </Box>
+                <MediaPreview
+                  isVideo={post.data.is_video}
+                  link={post.data.url_overridden_by_dest}
+                  alt={post.data.title}
+                  height={425}
+                />
               </a>
             )}
 

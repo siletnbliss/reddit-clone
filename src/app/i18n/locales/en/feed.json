@@ -1,4 +1,11 @@
 {
   "posted": "Posted by",
-  "comments": "Comments"
+  "comments": "Comments",
+  "filters": {
+    "best": "Best",
+    "hot": "Hot",
+    "new": "New",
+    "top": "Top",
+    "rising": "Rising"
+  }
 }

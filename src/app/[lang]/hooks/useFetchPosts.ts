@@ -5,8 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 import { RedditListing } from "../ts/reddit";
 
 const KIND_PARAM = "k";
-const VALID_KINDS: PostKind[] = ["best", "hot", "new", "rising"];
-type PostKind = "best" | "hot" | "new" | "rising";
+const VALID_KINDS: PostKind[] = ["best", "hot", "new", "top", "rising"];
+export type PostKind = "best" | "hot" | "new" | "top" | "rising";
 
 const fetchPosts = async (kind: string) => {
   const parsedKind: PostKind = VALID_KINDS.includes(kind as PostKind)
@@ -25,7 +25,7 @@ export const useFetchPosts = () => {
   const params = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const kind = params.get(KIND_PARAM) ?? "";
+  const kind = params.get(KIND_PARAM) ?? "best";
 
   const setKind = (kind: PostKind) => {
     const newParams = new URLSearchParams(params.toString());
@@ -37,6 +37,8 @@ export const useFetchPosts = () => {
     queryKey: [kind],
     queryFn: (ctx) => fetchPosts(ctx.queryKey[0]),
     refetchInterval: false,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
   });
 
   return {

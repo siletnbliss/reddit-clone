@@ -1,0 +1,11 @@
+.chip-icon {
+  display: none;
+}
+
+.chip-icon span {
+  display: none;
+}
+
+.chip-body {
+  width: max-content;
+}

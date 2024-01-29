@@ -1,4 +1,11 @@
 {
-  "posted": "Subido por",
-  "comments": "Comentarios"
+  "posted": "Publicado por",
+  "comments": "Comentarios",
+  "filters": {
+    "best": "Mejores",
+    "hot": "Destacado",
+    "new": "Más Nuevos",
+    "top": "Más Votados",
+    "rising": "En Alza"
+  }
 }
